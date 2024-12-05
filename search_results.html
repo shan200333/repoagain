@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #181818;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1DB954;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333333;
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        li span {
+            font-weight: bold;
+            color: #1DB954;
+        }
+        .play-button {
+            background-color: #1DB954;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .play-button:hover {
+            background-color: #168f41;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin-top: 20px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search Results for "{{ search_query }}"</h1>
+        <ul>
+            {% for result in search_results %}
+                <li>
+                    <span>{{ result.title }}</span> - {{ result.artist }}
+                    <button class="play-button" onclick="playVideo('{{ result.video_id }}')">Play</button>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="video-container" id="player"></div> <!-- Div to hold the YouTube player -->
+    </div>  
+
+    <script>
+        function playVideo(videoId) {
+            // Construct the embed URL for the selected video
+            var embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+
+            // Create an iframe element for the embedded player
+            var playerDiv = document.getElementById('player');
+            playerDiv.innerHTML = '<iframe width="560" height="315" src="' + embedUrl + '" frameborder="0" allowfullscreen></iframe>';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            text-align: center;
+            padding: 50px;
+            font-family: 'Anton', sans-serif;
+        }
+
+        h1, h2 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        li {
+            margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        form {
+            max-width: 300px;
+            margin: auto;
+        }
+
+        label {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            display: inline-block;
+            border: none;
+            background: #333333;
+            color: #ffffff;
+        }
+
+        input[type="submit"] {
+            background-color: #1DB954;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        a {
+            color: #1DB954;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ user.username }}!</h1>
+        
+        <h2>Your Playlist</h2>
+        <ul>
+            {% for song in playlist %}
+                <li>
+                    <span>{{ song.song_name }}</span>
+                    <form method="post" action="{{ url_for('remove_song') }}">
+                        <input type="hidden" name="song_id" value="{{ song.id }}">
+                        <input type="submit" value="Remove" class="btn btn-danger btn-sm">
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        
+        <h2>Add a Song</h2>
+        <form method="post" action="{{ url_for('dashboard') }}">
+            <label for="song_name">Song Name:</label>
+            <input type="text" id="song_name" name="song_name" class="form-control" required>
+            <br>
+            <input type="submit" value="Add Song" class="btn btn-success">
+        </form>
+        
+        <p><a href="{{ url_for('logout') }}" class="btn btn-link">Logout</a></p>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js scripts (required for Bootstrap features) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

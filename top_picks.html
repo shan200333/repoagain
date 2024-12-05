@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Picks</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #c3195d;
+            background: url("https://images.pexels.com/photos/1809644/pexels-photo-1809644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+            
+            color: #ffffff;
+            text-align: center;
+            padding: 50px;
+            font-family: 'Anton', sans-serif;
+        }
+
+        h1, h2 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .featured-song {
+            margin-bottom: 30px;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        a {
+            color: #1DB954;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Top Picks</h1>
+        
+        <h2>Our Featured Songs</h2>
+
+        <div class="featured-song">
+            <h3>Song 1</h3>
+            <audio controls>
+                <source src="{{ url_for('static', filename='songs/song1.wav') }}" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="featured-song">
+            <h3>Song 2</h3>
+            <audio controls>
+                <source src="{{ url_for('static', filename='songs/song2.wav') }}" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="featured-song">
+            <h3>Song 3</h3>
+            <audio controls>
+                <source src="{{ url_for('static', filename='songs/song3.wav') }}" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="featured-song">
+            <h3>Song 4</h3>
+            <audio controls>
+                <source src="{{ url_for('static', filename='songs/song4.wav') }}" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="featured-song">
+            <h3>Song 5</h3>
+            <audio controls>
+                <source src="{{ url_for('static', filename='songs/song5.wav') }}" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <p><a href="{{ url_for('home') }}" class="btn btn-link">Back to Home</a></p>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

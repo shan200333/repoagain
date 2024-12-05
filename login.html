@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #121212; 
+            color: #ffffff; 
+            text-align: center;
+            padding: 100px;
+            font-family: 'Anton', sans-serif; 
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+
+        form {
+            max-width: 300px;
+            margin: auto;
+        }
+
+        label {
+            color: #ffffff; 
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            display: inline-block;
+            border: none;
+            background: #333333; 
+            color: #ffffff; 
+        }
+
+        input[type="submit"] {
+            background-color: #1DB954; 
+            color: #ffffff; 
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049; 
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #ffffff; 
+        }
+
+        a {
+            color: #1DB954;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #45a049; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form method="post" action="{{ url_for('login') }}">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" class="form-control" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" class="form-control" required>
+            <br>
+            <input type="submit" value="Login" class="btn btn-success">
+        </form>
+        <p>Don't have an account? <a href="{{ url_for('register') }}" class="btn btn-link">Register</a></p>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

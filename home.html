@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HarmonyMix</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #1DB954;
+            background: url("https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+            color: #fff;
+            text-align: center;
+            padding: 100px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 1.5em;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #ccc;
+        }
+
+        .soundcloud-line {
+            font-size: 1.2em;
+            margin-top: 30px;
+        }
+
+        .top-picks-box {
+            margin-top: 50px;
+        }
+
+        .alert-custom {
+            background-color: #F88379; 
+            color: #fff;
+            border-color: black; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to HarmonyMix</h1>
+        <p>
+            <a href="{{ url_for('register') }}" class="btn btn-outline-light btn-lg">Register</a> or 
+            <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg">Login</a>
+        </p>
+
+        <p class="soundcloud-line">Discover, stream, and share a constantly expanding mix of music from emerging and major artists around the world.</p>
+
+        <div class="alert alert-custom top-picks-box" role="alert">
+            <strong>LISTEN TO OUR TOP PICKS!</strong>
+            <a href="{{ url_for('top_picks') }}" class="btn btn-primary btn-sm ml-2">Explore</a>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #191414; 
+            color: #FFFFFF; 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            padding-top: 60px;
+        }
+        
+        .container {
+            max-width: 800px; 
+        }
+        
+        h1, h2 {
+            color: #1DB954; 
+        }
+        
+        .song-card {
+            background-color: #212121;
+            padding: 10px 20px; 
+            margin-bottom: 10px;
+            border-radius: 5px; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .song-card span {
+            flex-grow: 1;
+            margin-right: 10px;
+            color: #FFFFFF; 
+        }
+        
+        .remove-btn {
+            background-color: #FF4B4B; 
+            border-color: #FF4B4B; 
+        }
+        
+        .remove-btn:hover {
+            background-color: #FF6666; 
+            border-color: #FF6666;
+        }
+        
+        input[type="text"] {
+            background-color: #212121; 
+            color: #FFFFFF;
+            border-color: #535353; 
+        }
+        
+        input[type="text"]:focus {
+            border-color: #1DB954; 
+            box-shadow: 0 0 0 0.2rem rgba(29,185,84,0.5); 
+        }
+        
+        input[type="submit"] {
+            background-color: #1DB954; 
+            border-color: #1DB954;
+            color: #FFFFFF; 
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #24C166; 
+            border-color: #24C166;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ user.username }}!</h1>
+        
+        <h2>Your Playlist</h2>
+        <ul>
+            {% for song in playlist %}
+                <li>
+                    <div class="song-card">
+                        <span>{{ song.song_name }}</span>
+                        <form method="post" action="{{ url_for('remove_song') }}">
+                            <input type="hidden" name="song_id" value="{{ song.id }}">
+                            <button type="submit" class="btn btn-danger remove-btn">Remove</button>
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        
+        <h2>Add a Song</h2>
+        <form method="post" action="{{ url_for('dashboard') }}">
+            <div class="form-group">
+                <label for="song_name">Song Name:</label>
+                <input type="text" id="song_name" name="song_name" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success">Add Song</button>
+        </form>
+        
+        <h2>Search Songs</h2>
+        <form method="get" action="{{ url_for('search_songs') }}">
+            <div class="form-group">
+                <label for="search_query">Search Song or Artist:</label>
+                <input type="text" id="search_query" name="search_query" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        
+        <p><a href="{{ url_for('logout') }}" class="btn btn-link">Logout</a></p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
